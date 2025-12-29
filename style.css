@@ -1,0 +1,109 @@
+/* ベース設定 */
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: #000; /* 黒背景 */
+  color: #fff; /* 基本文字は白 */
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* ヘッダー */
+header {
+  background-color: #000;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.55rem;
+}
+
+/* リンクの色を灰色に統一 */
+a:link,
+a:visited {
+  color: rgb(102, 102, 102); /* 灰色 */
+  text-decoration: underline; /* 下線を消す場合 */
+}
+
+/* ホバー時に濃い紺色へ */
+a:hover {
+  color: rgb(90, 110, 166);        /* 濃い紺色 */
+}
+
+/* ナビゲーション（ボタン風） */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+nav a {
+  display: inline-block;
+  background: linear-gradient(#444, #222); /* 立体感 */
+  color: gray;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+  transition: transform 0.2s, background 0.3s;
+}
+
+nav a:link,
+nav a:visited {
+  color: white; /* 白色 */
+  text-decoration: none; /* 下線を消す場合 */
+}
+
+nav a:hover {
+  background: linear-gradient(#666, #333);
+  transform: translateY(-2px);
+  color: rgb(0, 0, 0);
+}
+
+/* セクション枠 */
+section {
+  background-color: #ddd; /* 薄灰色 */
+  color: #000; /* 黒文字 */
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 12px; /* 角丸 */
+  max-width: 800px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+/* 箇条書き */
+ul {
+  list-style: none; /* デフォルトの「・」を消す */
+  padding-left: 1rem;
+}
+
+ul li {
+  position: relative;
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+}
+
+/* カスタムアイコン（テクスチャ風） */
+ul li::before {
+  content: "◆"; /* ダイヤ型などに変更可能 */
+  position: absolute;
+  left: 0;
+  color: #333;
+  font-size: 1rem;
+}
+
+/* コメント部分 */
+.comment {
+  display: block;
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.2rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid #999;
+}
