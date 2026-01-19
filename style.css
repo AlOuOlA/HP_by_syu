@@ -25,7 +25,7 @@ header h1 {
 a:link,
 a:visited {
   color: rgb(102, 102, 102); /* 灰色 */
-  text-decoration: underline; /* 下線を消す場合 */
+  text-decoration: underline;
 }
 
 /* ホバー時に濃い紺色へ */
@@ -91,11 +91,15 @@ ul li {
 
 /* カスタムアイコン（テクスチャ風） */
 ul li::before {
-  content: "◆"; /* ダイヤ型などに変更可能 */
+  content: "◆"; /* 他の形状に変更可能 */
   position: absolute;
   left: 0;
   color: #333;
   font-size: 1rem;
+}
+
+nav li::before {
+  content: none;
 }
 
 /* コメント部分 */
@@ -106,4 +110,14 @@ ul li::before {
   margin-top: 0.2rem;
   padding-left: 0.5rem;
   border-left: 2px solid #999;
+}
+
+/* 追加コメント部分 */
+.newcomment {
+  display: block;
+  font-size: 0.9rem;
+  color: rgb(120, 55, 50);
+  margin-top: 0.2rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid rgb(130, 60, 70);
 }
