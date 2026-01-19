@@ -121,3 +121,19 @@ nav li::before {
   padding-left: 0.5rem;
   border-left: 2px solid rgb(130, 60, 70);
 }
+
+.music-item {
+  margin-bottom: 40px; /* 曲ごとの余白 */
+}
+
+.music-item .title {
+  font-weight: normal;
+  margin-bottom: 8px;
+}
+
+.music-item iframe {
+  width: 560px;
+  height: 315px;
+  display: block;
+  margin-bottom: 8px;
+}
