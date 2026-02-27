@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>syuのホームページ - Favorite Musics</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .artist-block {
+      margin-bottom: 2rem;
+    }
+
+    .scroll-row {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .music-card {
+      background: #ddd;
+      color: #000;
+      border-radius: 12px;
+      padding: 1rem;
+      min-width: 300px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+
+    .music-card iframe {
+      width: 100%;
+      height: 180px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1><a href="index.html"><img src="HP_logo_mono_s.png" width="456" height="80"></a></h1>
+  <h1>Favorite Musics（お気に入り楽曲一覧）</h1>
+  <nav>
+    <ul>
+      <li><a href="favorites.html">← Back</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="music-container">
+
+<script>
+const musicData = [
+  {
+    artist: "キタニタツヤ / こんにちは谷田さん / GEMN",
+    songs: [
+      { title: "素敵なしゅうまつを！", url: "https://www.youtube.com/embed/By7IfhoAyqA?si=QbKWYzf0jKvC-xn2" },
+      { title: "青のすみか", url: "https://www.youtube.com/embed/zuoVd2QNxJo?si=QxnGN5ufy_-k9rQI" },
+      { title: "青のすみか（Acostic ver.）", url: "https://www.youtube.com/embed/xWTNnC6rQao?si=cHn7drFYyngEa1-E" },
+      { title: "ずうっといっしょ！", url: "https://www.youtube.com/embed/pdkXf2Ztunk?si=skrXqcXmu_waUEPG" },
+      { title: "ファタール", url: "https://www.youtube.com/embed/8tQiWHXSGN0?si=pLkFKt0wBs4LDyeo" },
+      { title: "聖者の行進", url: "https://www.youtube.com/embed/e9RVh2bXA8M?si=aNpqfDooHu2nWLlb" },
+      { title: "悪魔の踊り方", url: "https://www.youtube.com/embed/v7_Jo4SfICk?si=-s0ZQ6qPExy3e8m-" }
+    ]
+  },
+
+  {
+    artist: "なとり",
+    songs: [
+      { title: "絶対零度", url: "https://www.youtube.com/embed/LFoyXEFaz2Q?si=nrDbbjNx6EIoWYir" },
+      { title: "SPEED", url: "https://www.youtube.com/embed/r2BbUBSWBAM?si=PnaLRdEkd3sXWp5U" },
+      { title: "フライデー・ナイト", url: "https://www.youtube.com/embed/4Pls29qqg6Y?si=cBzdjR0Y594I6L02" },
+      { title: "IN_MY_HEAD", url: "https://www.youtube.com/embed/49tyOkJ0uLs?si=5kKT_83Vy4nXtTAB" },
+      { title: "Overdose", url: "https://www.youtube.com/embed/H08YWE4CIFQ?si=jJRwBPWz4X2uSDpw" }
+    ]
+  },
+
+  {
+    artist: "原口沙輔",
+    songs: [
+      { title: "イガク", url: "https://www.youtube.com/embed/F38EuG2dAyM?si=G8PYzss3IhwjVzaE" },
+      { title: "アコトバ", url: "https://www.youtube.com/embed/ZNm__qZY-uU?si=3RgKdx-WgmyUtuJf" },
+      { title: "外のヒト", url: "https://www.youtube.com/embed/VkWhbmeeTXs?si=kKnrkv0wmZ_8IXIP" },
+      { title: "重ねトマト缶", url: "https://www.youtube.com/embed/2nk4KNjK9qQ?si=CvbT-elq5Es9VfOW" },
+      { title: "贋ト旧称（＋月ノ美兎）", url: "https://www.youtube.com/embed/RfGAJTWxfhw?si=Zm3sMGgGrsTR5un_" },
+      { title: "人マニア", url: "https://www.youtube.com/embed/HTxwOxFt5d4?si=_wTA99UoMaSVE18X" }
+    ]
+  },
+
+  {
+    artist: "てにをは",
+    songs: [
+      { title: "ヴィラン", url: "https://www.youtube.com/embed/p9FJXfGHtDA?si=wzNdhueMMMEP4afz" },
+      { title: "名探偵連続殺人事件", url: "https://www.youtube.com/embed/j3y7bJxOUZQ?si=gCqXO6xqiNi8gITe" },
+      { title: "修羅薔薇", url: "https://www.youtube.com/embed/SkzHGOLdvsA?si=TerAGNQzEarhO2Og" },
+      { title: "ザムザ", url: "https://www.youtube.com/embed/q90SFMi8aUg?si=DsooDzgqib62Mg2W" }
+    ]
+  },
+
+  {
+    artist: "YOASOBI",
+    songs: [
+      { title: "群青", url: "https://www.youtube.com/embed/Y4nEEZwckuU?si=sPt3E7aIozi4z0Yy" },
+      { title: "祝福", url: "https://www.youtube.com/embed/3eytpBOkOFA?si=BLdxQSpdPE-9R0bC" },
+      { title: "たぶん", url: "https://www.youtube.com/embed/8iuLXODzL04?si=AvXtaU5koX3IDzLz" },
+      { title: "怪物", url: "https://www.youtube.com/embed/dy90tA3TT1c?si=gUCgv74Eao8THQcb" },
+      { title: "UNDEAD", url: "https://www.youtube.com/embed/Jj1_mfUzjOs?si=_CnOx1AI9UEJNIHU" },
+      { title: "夜に駆ける", url: "https://www.youtube.com/embed/x8VYWazR5mE?si=CUBnHckgfgwxFmDO" }
+    ]
+  },
+
+  {
+    artist: "超学生",
+    songs: [
+      { title: "Innocent Tyrant", url: "https://www.youtube.com/embed/wa_C2wchZus?si=Vz9aiVA5j1QQFN2d" },
+      { title: "Did you see the sunrise?", url: "https://www.youtube.com/embed/r41R0BKosVw?si=CpQqZXNQghBUcyL-" },
+      { title: "Untouchable", url: "https://www.youtube.com/embed/97FVoXELcUg?si=ydnmbKNU0YcTtbuU" },
+      { title: "ガトリングアジテイタア", url: "https://www.youtube.com/embed/36g2rLRgtFg?si=_-9n6nhCYsLjIwtE" },
+      { title: "Let's go", url: "https://www.youtube.com/embed/f4lUS7uYPp4?si=NoHl7rV_szUkG9AV" },
+      { title: "Musication", url: "https://www.youtube.com/embed/ZszYOF32LFc?si=DS802bsv3Z7TpW7J" }
+    ]
+  },
+
+  {
+    artist: "米津玄師 / ハチ",
+    songs: [
+      { title: "IRIS OUT", url: "https://www.youtube.com/embed/LmZD-TU96q4?si=IQBNWYKYHiXAGjaF" },
+      { title: "JANE DOE", url: "https://www.youtube.com/embed/sPLqsLsooJY?si=iz2NGJOlz1XfOsQX" },
+      { title: "KICK BACK", url: "https://www.youtube.com/embed/M2cckDmNLMI?si=7riJEIabSky3Be-r" },
+      { title: "さよーならまたいつか！", url: "https://www.youtube.com/embed/-wb2PAx6aEs?si=b31vKiE6aaoZp0VM" },
+      { title: "パプリカ（self cover）", url: "https://www.youtube.com/embed/s582L3gujnw?si=pntN6T4csEdqdbOk" },
+      { title: "ドーナツホール", url: "https://www.youtube.com/embed/qnX2CdOBcDI?si=hVGPjl19qj_cbATT" },
+      { title: "ドーナツホール（2024 ver.）", url: "https://www.youtube.com/embed/y7fu_nNQAEQ?si=SCTf_aJOSXHR_QdS" },
+      { title: "LOSER", url: "https://www.youtube.com/embed/Dx_fKPBPYUI?si=UIwnfzX6sFov05tN" },
+      { title: "Flamingo", url: "https://www.youtube.com/embed/Uh6dkL1M9DM?si=4KUL6Xes5DvXWY7X" }
+    ]
+  },
+
+  {
+    artist: "ぬゆり",
+    songs: [
+      { title: "命ばっかり", url: "https://www.youtube.com/embed/YDnZFwlZa1g?si=P5wDOeFKnra66FuD" },
+      { title: "フラジール", url: "https://www.youtube.com/embed/a_rrj1Xh5LI?si=xR0Xi2RmQ_CLPjxp" },
+      { title: "フィクサー", url: "https://www.youtube.com/embed/srH34Tjjo9U?si=828aL_zOcdj_gYPc" },
+      { title: "ロウワー", url: "https://www.youtube.com/embed/3sEptl-psU0?si=ipOBXpLvslIgAMv7" }
+    ]
+  },
+
+  {
+    artist: "lumo",
+    songs: [
+      { title: "逃避ケア", url: "https://embed.nicovideo.jp/watch/sm16685902" },
+      { title: "デンパラダイム", url: "https://embed.nicovideo.jp/watch/sm20688147" },
+      { title: "パラレルレイヤー", url: "https://www.youtube.com/embed/AegqO851dwY?si=9nl70_y2owOllU1o" }
+    ]
+  }
+];
+</script>
+
+<script>
+const container = document.getElementById("music-container");
+
+musicData.forEach(artistBlock => {
+  const section = document.createElement("section");
+  section.className = "artist-block";
+
+  section.innerHTML = `
+    <h2>${artistBlock.artist}</h2>
+    <div class="scroll-row">
+      ${artistBlock.songs.map(song => `
+        <div class="music-card">
+          <p class="title">${song.title}</p>
+          <iframe src="${song.url}" 
+	  frameborder="0" 
+	  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+	  allowfullscreen></iframe>
+        </div>
+      `).join("")}
+    </div>
+  `;
+
+  container.appendChild(section);
+});
+</script>
+
+</main>
+
+<footer>
+  <p>&copy; syu</p>
+</footer>
+
+</body>
+</html>
