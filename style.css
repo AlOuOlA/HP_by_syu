@@ -139,14 +139,14 @@ nav li::before {
 }
 
 /* SNSアイコンの横並び */
-.sns-icons {
+.icons {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
   margin-top: 2rem;
 }
 
-.sns-icon {
+.icon {
   width: 64px;
   height: 64px;
   border-radius: 12px;
@@ -156,7 +156,7 @@ nav li::before {
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.sns-icon:hover {
+.icon:hover {
   transform: translateY(-4px);
   box-shadow: 4px 4px 10px rgba(0,0,0,0.6);
 }
